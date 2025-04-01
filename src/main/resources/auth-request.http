@@ -1,0 +1,11 @@
+### Authentication API
+POST http://localhost:9099/auth/api/v_1/authentication
+Content-Type: application/json
+
+{
+    "origin": "WEB",
+    "emailAddress": "superadmin",
+    "password": "superadmin"
+}
+
+> {% client.global.set("auth_token", response.body.data.accessToken); %}

@@ -1,0 +1,59 @@
+server:
+  port: 9099
+  servlet:
+    context-path: /fp
+
+spring:
+  cache:
+    type: none
+  application:
+    name: shf-fp
+  datasource:
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5432/sw_fp
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+      minimum-idle: 10
+      maximum-pool-size: 50
+      idle-timeout: 180000
+      max-lifetime: 1800000
+      connection-timeout: 15000
+      leak-detection-threshold: 10000
+      housekeeping-period-ms: 30000
+      connection-test-query: SELECT 1
+      register-mbeans: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      cache:
+        use_second_level_cache: true
+        use_query_cache: true
+        region:
+          factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+      generate_statistics: true
+      jdbc:
+        batch_size: 50
+        fetch_size: 50
+    properties:
+      hibernate:
+        order_inserts: true
+        order_updates: true
+        connection.provider_disables_autocommit: true
+        format_sql: false
+        show_sql: false
+
+management:
+  metrics:
+    enable:
+      hikari: true
+
+logging:
+  file.name: /logs/auth.local.log
+  pattern:
+    console: "%d{ISO8601} [%d{z}] - %-5p [%t]: [%C:%L] %m%n"
+    file: "%d{ISO8601} [%d{z}] - %-5p [%t]: [%C:%L] %m%n"
+  level:
+    root: INFO
+    org.springframework.*: INFO
+    com.shr.food.place.*: INFO

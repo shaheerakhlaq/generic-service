@@ -1,0 +1,2 @@
+INSERT INTO public.sw_organizations(str_name, str_code, str_address, str_email_address, str_phone_number, int_status, int_created_by, dat_created_date)
+VALUES ('SHR', 'SHR', 'Address', 'info@shr.com', '123', 1, 1, now());
